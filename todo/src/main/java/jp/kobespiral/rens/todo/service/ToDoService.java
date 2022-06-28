@@ -62,6 +62,7 @@ public class ToDoService {
     }
 
     public ToDo revertTask(Long seq) {
+        /* Taskのbool値を反転させる */
         ToDo todo = tdRepo.findById(seq).orElseThrow(
                 () -> new ToDoAppException(ToDoAppException.NO_SUCH_MEMBER_EXISTS, seq + ": No such member exists"));
 
