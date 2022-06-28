@@ -11,7 +11,8 @@
     <form th:action="@{/{mid}/registered(mid=${mid})}" method="post" th:object="${ToDoForm}">
         <input type="text" required th:field="*{title}">
         <input type="submit" value="作成">
-    </form> 
+    </form>
+    <a th:href="@{/{mid}/all_todos(mid=${mid})}">全員のリストを見る</a>
     <h2>TO DO  LIST</h2>
     <table border="1">
         <tr>

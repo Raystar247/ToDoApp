@@ -1,0 +1,28 @@
+<h1>全員のリスト</h1>
+<a th:href="@{/{mid}/todos(mid=${mid})}">個人のリストに戻る</a>
+<h2>Todo List</h2>
+<table border="1">
+    <tr>
+        <th>番号</th>
+        <th>ユーザー</th>
+        <th>タイトル</th>
+    </tr>
+    <tr th:each="m: ${Todos}">
+        <td>[[*{m.seq}]] </td>
+        <td>[[*{m.mid}]] </td>
+        <td>[[*{m.title}]] </td>
+    </tr>
+</table>
+<h2>Done List</h2>
+<table border="1">
+    <tr>
+        <th>番号</th>
+        <th>ユーザー</th>
+        <th>タイトル</th>
+    </tr>
+    <tr th:each="m: ${Dones}">
+        <td>[[*{m.seq}]] </td>
+        <td>[[*{m.mid}]] </td>
+        <td>[[*{m.title}]] </td>
+    </tr>
+</table>

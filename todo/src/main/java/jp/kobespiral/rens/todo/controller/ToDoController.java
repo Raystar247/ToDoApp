@@ -85,4 +85,14 @@ public class ToDoController {
         return "redirect:/" + mid + "/todos";
     }
 
+    @GetMapping("/{mid}/all_todos")
+    String showAllTodos(@PathVariable String mid, Model model) {
+        List<ToDo> todos = tdService.getToDoList();
+        model.addAttribute("Todos", todos);
+        List<ToDo> dones = tdService.getDoneList();
+        model.addAttribute("Dones", dones);
+
+        return "all_todos";
+    }
+
 }
