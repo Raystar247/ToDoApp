@@ -59,10 +59,10 @@ public class ToDoService {
         return l;
     }
 
-    public void doneTask(Long seq) {
+    public ToDo revertTask(Long seq) {
         ToDo todo = tdRepo.findById(seq).orElseThrow(
                 () -> new ToDoAppException(ToDoAppException.NO_SUCH_MEMBER_EXISTS, seq + ": No such member exists"));
-        todo.setDone(true);
-
+        todo.done = !todo.done;
+        return tdRepo.save(todo);
     }
 }

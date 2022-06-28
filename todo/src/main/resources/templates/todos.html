@@ -25,5 +25,18 @@
             <td><a th:href="@{/{mid}/{seq}/done(mid=${mid},seq=${m.seq})}">Done</a></td>
         </tr>
     </table>
+    <h2>DONE  LIST</h2>
+    <table border="1">
+        <tr>
+            <th>設定日時</th>
+            <th>タイトル</th>
+            <th>戻す</th>
+        </tr>
+        <tr th:each="m: ${Dones}">
+            <td>[[${m.createdAt}]]</td>
+            <td>[[${m.title}]]</td>
+            <td><a th:href="@{/{mid}/{seq}/done(mid=${mid},seq=${m.seq})}">ToDo</a></td>
+        </tr>
+    </table>
 </body>
 </html>

@@ -1,16 +1,30 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>タスク登録完了</title>
 </head>
 <body>
-    作成しました。
-    [[${td}]]
-    <form action="/back" method="get">
-        <input type="submit" value="戻る">
-    </form>
+    <h1>登録完了</h1>
+    <p>
+        [[${mid}]]さんのタスク登録を完了しました．
+    </p>
+
+    <div th:object="${td}">
+        <p>
+            <label>タスク番号: </label>
+            [[*{seq}]]
+        </p>
+        <p>
+            <label>タイトル</label>
+            [[*{title}]]
+        </p>
+        <p>
+            <a th:href=@{/{mid}/todos(mid=${mid})}>続けて登録</a><br />
+            <a th:href=@{/}>初めに戻る</a><br />
+        </p>
+    </div>
 </body>
 </html>

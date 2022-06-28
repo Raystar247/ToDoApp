@@ -23,7 +23,7 @@ public class ToDo {
     Long seq; // 通し番号
     String title; // 題目
     String mid; // 作成者
-    boolean done; // 完了フラグ
+    public boolean done = false; // 完了フラグ
     @Temporal(TemporalType.TIMESTAMP)
     Date createdAt; // 作成日時
     @Temporal(TemporalType.TIMESTAMP)

@@ -74,7 +74,15 @@ public class ToDoController {
     String ShowRegisteredTodos(@ModelAttribute(name = "ToDoForm") ToDoForm form, @PathVariable String mid,
             Model model) {
         ToDo td = tdService.createToDo(mid, form);
-        model.addAttribute("td", mid);
+        model.addAttribute("td", td);
+        model.addAttribute("mid", mid);
         return "madeToDo";
     }
+
+    @GetMapping("/{mid}/{seq}/done")
+    String revertTask(@PathVariable String mid, @PathVariable Long seq, Model model) {
+        tdService.revertTask(seq);
+        return "redirect:/" + mid + "/todos";
+    }
+
 }
