@@ -27,5 +27,5 @@ public class ToDo {
     @Temporal(TemporalType.TIMESTAMP)
     Date createdAt; // 作成日時
     @Temporal(TemporalType.TIMESTAMP)
-    Date doneAt; // 完了日時
+    public Date doneAt; // 完了日時
 }

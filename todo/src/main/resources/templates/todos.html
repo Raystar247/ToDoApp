@@ -18,7 +18,7 @@
         <tr>
             <th>設定日時</th>
             <th>タイトル</th>
-            <th>終了</th>
+            <th>完了</th>
         </tr>
         <tr th:each="m: ${Todos}">
             <td>[[${m.createdAt}]]</td>
@@ -29,12 +29,12 @@
     <h2>DONE  LIST</h2>
     <table border="1">
         <tr>
-            <th>設定日時</th>
+            <th>完了日時</th>
             <th>タイトル</th>
             <th>戻す</th>
         </tr>
         <tr th:each="m: ${Dones}">
-            <td>[[${m.createdAt}]]</td>
+            <td>[[${m.doneAt}]]</td>
             <td>[[${m.title}]]</td>
             <td><a th:href="@{/{mid}/{seq}/done(mid=${mid},seq=${m.seq})}">ToDo</a></td>
         </tr>

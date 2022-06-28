@@ -2,6 +2,7 @@ package jp.kobespiral.rens.todo.service;
 
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 
 import jp.kobespiral.rens.todo.dto.ToDoForm;
@@ -22,8 +23,9 @@ public class ToDoService {
      * @return
      */
     public ToDo createToDo(String mid, ToDoForm form) {
+        Date dateObj = new Date();
         String title = form.title;
-        ToDo todo = new ToDo(null, title, mid, false, null, null);
+        ToDo todo = new ToDo(null, title, mid, false, dateObj, null);
         return tdRepo.save(todo);
 
     }
@@ -62,6 +64,9 @@ public class ToDoService {
     public ToDo revertTask(Long seq) {
         ToDo todo = tdRepo.findById(seq).orElseThrow(
                 () -> new ToDoAppException(ToDoAppException.NO_SUCH_MEMBER_EXISTS, seq + ": No such member exists"));
+
+        Date dateObj = new Date();
+        todo.doneAt = dateObj;
         todo.done = !todo.done;
         return tdRepo.save(todo);
     }
