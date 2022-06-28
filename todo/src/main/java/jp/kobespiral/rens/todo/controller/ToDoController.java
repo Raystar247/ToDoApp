@@ -49,6 +49,7 @@ public class ToDoController {
     /**
      * 自分のToDoを見るページ HTTP-GET
      * 
+     * @param mid
      * @param model
      * @return
      */
@@ -67,6 +68,8 @@ public class ToDoController {
     /**
      * ToDo作成完了画面を表示する
      * 
+     * @param form
+     * @param mid
      * @param model
      * @return
      */
@@ -79,12 +82,25 @@ public class ToDoController {
         return "madeToDo";
     }
 
+    /**
+     * 各Taskの完了・未完を変換する
+     * @param mid
+     * @param seq
+     * @param model
+     * @return
+     */
     @GetMapping("/{mid}/{seq}/done")
     String revertTask(@PathVariable String mid, @PathVariable Long seq, Model model) {
         tdService.revertTask(seq);
         return "redirect:/" + mid + "/todos";
     }
 
+    /**
+     * 全員のTaskを表示する
+     * @param mid
+     * @param model
+     * @return
+     */
     @GetMapping("/{mid}/all_todos")
     String showAllTodos(@PathVariable String mid, Model model) {
         List<ToDo> todos = tdService.getToDoList();
