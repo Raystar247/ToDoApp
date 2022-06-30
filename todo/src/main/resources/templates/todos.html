@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>[[${mid}]]さんのToDo List</h1>
+    <form th:action="@{/{mid}/registered(mid=${mid})}" method="post" th:object="${ToDoForm}">
+        <input type="text" required th:field="*{title}">
+        <input type="submit" value="作成">
+    </form>
+    <a th:href="@{/{mid}/all_todos(mid=${mid})}">全員のリストを見る</a>
+    <h2>TO DO  LIST</h2>
+    <table border="1">
+        <tr>
+            <th>設定日時</th>
+            <th>タイトル</th>
+            <th>完了</th>
+        </tr>
+        <tr th:each="m: ${Todos}">
+            <td>[[${m.createdAt}]]</td>
+            <td>[[${m.title}]]</td>
+            <td><a th:href="@{/{mid}/{seq}/done(mid=${mid},seq=${m.seq})}">Done</a></td>
+        </tr>
+    </table>
+    <h2>DONE  LIST</h2>
+    <table border="1">
+        <tr>
+            <th>完了日時</th>
+            <th>タイトル</th>
+            <th>戻す</th>
+        </tr>
+        <tr th:each="m: ${Dones}">
+            <td>[[${m.doneAt}]]</td>
+            <td>[[${m.title}]]</td>
+            <td><a th:href="@{/{mid}/{seq}/done(mid=${mid},seq=${m.seq})}">ToDo</a></td>
+        </tr>
+    </table>
+</body>
+</html>
